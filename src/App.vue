@@ -28,7 +28,10 @@ import Popup from './components/Popup.vue';
 			buttonTrigger: false
 		});
 		const TogglePopup = (trigger) => {
+      console.log(trigger);
+      console.log(popupTriggers.value[trigger]);
 			popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+      //buttonTrigger = !buttonTrigger;
 		}
     return {
 			Popup,
@@ -80,7 +83,17 @@ import Popup from './components/Popup.vue';
         }
         return false;
       },
-
+      resetGame: function resetGame(){
+        this.c1 = '';
+        this.c2 = '';
+        this.c3 = '';
+        this.c4 = '';
+        this.c5 = '';
+        this.c6 = '';
+        this.c7 = '';
+        this.c8 = '';
+        this.c9 = '';
+      },
       turnComputer: function turnComputer(){
         var random = Math.floor(Math.random() * 9) + 1;
         if(this['c' + random] == ''){
@@ -99,7 +112,8 @@ import Popup from './components/Popup.vue';
 		<Popup 
 			v-if="checkWinner()"
 			:TogglePopup="() => TogglePopup('buttonTrigger')">
-			<h2 class = "font">ŞANDELLENDİN</h2>
+			
+      
 		</Popup>
 	</main>
     <div>
@@ -126,10 +140,9 @@ import Popup from './components/Popup.vue';
         </table>
       </div>
       <div>
-        <a class = "informationLogo" href = "https://github.com/huseyinkoclar" target = "_self"> 
+        <h5 class = "information">Created by: HUSEYIN KOCLAR <a style="padding:14px; position: absolute; top:-22px" href = "https://github.com/huseyinkoclar" target = "_self"> 
          <img src = "/github.logo.png" alt = "Tutorials Point"/> 
-      </a>
-        <h5 class = "information">Created by: HUSEYIN KOCLAR</h5>
+      </a></h5>
       </div>
     </div>
   </template>
@@ -170,8 +183,8 @@ import Popup from './components/Popup.vue';
 
   .information{
     position:fixed;
-    top:95%;
-    left:44%;
+    top:92%;
+    left:46%;
     font-family: 'Pixel Font7', sans-serif;
   }
 
@@ -180,7 +193,6 @@ import Popup from './components/Popup.vue';
     top:94%;
     left:54%;
   }
-
   .font {
     font-family: 'Pixel Font7', sans-serif;
   }

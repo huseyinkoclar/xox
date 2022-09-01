@@ -2,6 +2,7 @@
 	<div class="popup">
 		<div class="popup-inner">
 			<slot></slot>
+			<h2 class = "font">ŞANDELLENDİN</h2>
 			<button class="popup-close" @click="TogglePopup();">
 				Play Again.
 			</button>
@@ -54,5 +55,8 @@ export default {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+.font {
+    font-family: 'Pixel Font7', sans-serif;
+  }
 
 </style>
