@@ -24,16 +24,16 @@ import Popup from './components/Popup.vue';
     Popup
     },
     setup () {
-		const popupTriggers = ref({
-			buttonTrigger: false
+      var winner = ref(false);
+		  const popupTriggers = ref({
+			buttonTrigger: true
 		});
 		const TogglePopup = (trigger) => {
-      console.log(trigger);
-      console.log(popupTriggers.value[trigger]);
 			popupTriggers.value[trigger] = !popupTriggers.value[trigger]
       //buttonTrigger = !buttonTrigger;
 		}
     return {
+      winner,
 			Popup,
 			popupTriggers,
 			TogglePopup
@@ -44,9 +44,10 @@ import Popup from './components/Popup.vue';
         if(this[name] == ''){
           this[name] = 'X';
         }
-        if(this.checkWinner()) return;
+        else return
+        if(this.checkWinner()) return this.checkWinner();
         this.turnComputer();
-        if(this.checkWinner()) return;
+        if(this.checkWinner()) return this.checkWinner();
       },
       checkWinner: function checkWinner(){
         if(this.c1 == this.c2 && this.c2 == this.c3 && this.c3 != ''){
@@ -81,6 +82,10 @@ import Popup from './components/Popup.vue';
           //alert('Winner is ' + this.c7);
           return true;
         }
+        if(this.c1 != '' && this.c2 != '' && this.c3 != '' && this.c4 != '' && this.c5 != '' && this.c6 != '' && this.c7 != '' && this.c8 != '' && this.c9 != ''){
+          //alert('Draw');
+          return true;
+        }
         return false;
       },
       resetGame: function resetGame(){
@@ -110,7 +115,7 @@ import Popup from './components/Popup.vue';
   <template>
     <main>
 		<Popup 
-			v-if="checkWinner()"
+			v-if="checkWinner() && popupTriggers.buttonTrigger"
 			:TogglePopup="() => TogglePopup('buttonTrigger')">
 			
       
@@ -129,7 +134,7 @@ import Popup from './components/Popup.vue';
           </tr>
           <tr>
             <td @click="changeValue('c4')" style = "border-top: 4px solid grey; border-right: 4px solid grey" class = "td">{{c4}}</td>
-            <td @click="changeValue('c5')" style = "border-top: 4px solid grey; border-right: 4px solid grey" class = "td">{{c5}}</td>
+            <td @click="changeValue('c5')" style = "border-top: 4px solid grey;border-top: 4px solid grey; border-right: 4px solid grey" class = "td">{{c5}}</td>
             <td @click="changeValue('c6')" style = "border-top: 4px solid grey" class = "td">{{c6}}</td>
           </tr>
           <tr>

@@ -3,7 +3,7 @@
 		<div class="popup-inner">
 			<slot></slot>
 			<h2 class = "font">ŞANDELLENDİN</h2>
-			<button class="popup-close" @click="TogglePopup();">
+			<button class="popup-close" @click="TogglePopup(); this.$root.$refs.resetGame();">
 				Play Again.
 			</button>
 		</div>
