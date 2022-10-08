@@ -117,8 +117,6 @@ import Popup from './components/Popup.vue';
 		<Popup 
 			v-if="checkWinner() && popupTriggers.buttonTrigger"
 			:TogglePopup="() => TogglePopup('buttonTrigger')">
-			
-      
 		</Popup>
 	</main>
     <div>

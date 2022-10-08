@@ -2,8 +2,8 @@
 	<div class="popup">
 		<div class="popup-inner">
 			<slot></slot>
-			<h2 class = "font">ŞANDELLENDİN</h2>
-			<button class="popup-close" @click="TogglePopup(); this.$root.$refs.resetGame();">
+			<h2 class = "font">GAME OVER</h2>
+			<button class="popup-close" @click="TogglePopup(); resetGame()">
 				Play Again.
 			</button>
 		</div>
@@ -11,8 +11,18 @@
 </template>
 
 <script>
+import { onMounted } from 'vue';
+
 export default {
-	props: ['TogglePopup']
+	props: ['TogglePopup'],
+	methods: {
+		resetGame() {
+			this.$root.resetGame();
+		}
+	},
+	mounted() {
+		this.resetGame();
+	}
 }
 </script>
 
